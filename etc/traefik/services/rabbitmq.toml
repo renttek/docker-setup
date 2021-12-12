@@ -1,0 +1,13 @@
+[http]
+  [http.routers]
+    [http.routers.rabbitmq]
+      entryPoints = ["websecure"]
+      service = "rabbitmq"
+      rule = "Host(`rabbitmq.demo.local`)"
+      [http.routers.rabbitmq.tls]
+
+  [http.services]
+    [http.services.rabbitmq]
+      [http.services.rabbitmq.loadBalancer]
+        [[http.services.rabbitmq.loadBalancer.servers]]
+          url = "http://rabbitmq:15672"

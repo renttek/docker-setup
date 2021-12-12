@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker-compose -f docker-compose.oneoff.yml run --rm -u "$(id -u):$(id -g)" node grunt "$@" 2> /dev/null

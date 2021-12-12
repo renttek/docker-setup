@@ -1,0 +1,70 @@
+version: '3'
+
+services:
+  nginx-static-files:
+    image: nginx:alpine
+    volumes:
+      - ./etc/nginx-static-files/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./etc/nginx-static-files/static-files.conf:/etc/nginx/static-files.conf:ro
+      - ./etc/nginx-static-files/varnish.js:/etc/nginx/varnish.js:ro
+      - ./src:/var/www/html:ro
+
+  varnish:
+    image: varnish:6
+    volumes:
+      - ./etc/varnish/varnish.vcl:/etc/varnish/default.vcl:ro
+    tmpfs:
+      - /var/lib/varnish:exec
+
+  nginx-magento:
+    image: nginx:alpine
+    volumes:
+      - ./etc/nginx-magento/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./etc/nginx-magento/magento.conf:/etc/nginx/magento.conf:ro
+      - ./src:/var/www/html:ro
+
+  php-fpm:
+    build:
+      context: ./docker/php-fpm
+    volumes:
+      - $HOME/.composer:/home/www-data/.composer
+      - ./src:/var/www/html
+      - ./etc/php/custom.ini:/usr/local/etc/php/conf.d/custom.ini:ro
+      - ./etc/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini:ro
+    environment:
+      - UID=${UID}
+      - GID=${GID}
+
+  database:
+    image: mysql:8
+    volumes:
+      - ./.data/database:/var/lib/mysql
+      - ./etc/database/dumps:/docker-entrypoint-initdb.d
+    env_file:
+      - .env
+    ports:
+      - 3306:3306
+
+  session:
+    image: redis:alpine
+
+  cache:
+    image: redis:alpine
+
+  rabbitmq:
+    image: rabbitmq:management-alpine
+    env_file:
+      - .env
+
+  elasticsearch:
+    build:
+      context: ./docker/elasticsearch
+
+  elastichq:
+    image: elastichq/elasticsearch-hq
+    env_file:
+      - .env
+
+  mailhog:
+    build:
+      context: ./docker/mailhog

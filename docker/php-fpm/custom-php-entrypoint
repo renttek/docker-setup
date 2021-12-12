@@ -1,0 +1,11 @@
+#!/bin/sh
+set -e
+
+# Adjust UID and GID
+if [ -n "${UID}" ] && [ -n "${GID}" ]; then
+  usermod -u "${UID}" -o www-data
+  groupmod -g "${GID}" -o www-data
+fi
+
+# Run upstream command
+exec docker-php-entrypoint "$@"

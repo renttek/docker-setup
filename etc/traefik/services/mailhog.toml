@@ -1,0 +1,13 @@
+[http]
+  [http.routers]
+    [http.routers.mailhog]
+      entryPoints = ["websecure"]
+      service = "mailhog"
+      rule = "Host(`mailhog.demo.local`)"
+      [http.routers.mailhog.tls]
+
+  [http.services]
+    [http.services.mailhog]
+      [http.services.mailhog.loadBalancer]
+        [[http.services.mailhog.loadBalancer.servers]]
+          url = "http://mailhog:8025"

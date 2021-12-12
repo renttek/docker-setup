@@ -1,0 +1,13 @@
+[http]
+  [http.routers]
+    [http.routers.magento]
+      entryPoints = ["websecure"]
+      service = "magento"
+      rule = "Host(`demo.local`)"
+      [http.routers.magento.tls]
+
+  [http.services]
+    [http.services.magento]
+      [http.services.magento.loadBalancer]
+        [[http.services.magento.loadBalancer.servers]]
+          url = "h2c://nginx-static-files:80"

@@ -1,0 +1,7 @@
+[[tls.certificates]]
+  certFile = "/etc/traefik/certificates/demo.local.pem"
+  keyFile = "/etc/traefik/certificates/demo.local-key.pem"
+
+[[tls.certificates]]
+  certFile = "/etc/traefik/certificates/_.demo.local.pem"
+  keyFile = "/etc/traefik/certificates/_.demo.local-key.pem"

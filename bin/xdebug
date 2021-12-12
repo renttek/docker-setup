@@ -1,0 +1,100 @@
+#!/bin/bash
+
+# docker-compose exec -u "$(id -u):$(id -g)" php-fpm php "$@"
+
+GREEN='\033[1;32m'
+RED='\033[0;31m'
+NC='\033[0m' # No Color
+
+printHelp() {
+    echo "Usage: bin/xdebug <command>"
+    echo ""
+    echo "Commands:"
+    echo "  enable      - Enables Xdebug"
+    echo "  disable     - Disables Xdebug"
+    echo "  status      - Disables Xdebug"
+    echo ""
+}
+
+echoRed() {
+  echo -e "${RED}$1${NC}"
+}
+
+echoGreen() {
+  echo -e "${GREEN}$1${NC}"
+}
+
+
+execSh() {
+  docker-compose exec php-fpm sh -c "$@"
+}
+
+restartContainer() {
+  docker-compose stop php-fpm
+  docker-compose up -d php-fpm
+}
+
+enable() {
+  execSh "cd /usr/local/etc/php/conf.d; test -f docker-php-ext-xdebug.off && mv docker-php-ext-xdebug.off docker-php-ext-xdebug.ini"
+  if [ $? -eq 0 ]
+  then
+    restartContainer
+    echoGreen "Enabled Xdebug!"
+    exit 0
+  else
+    echoRed "Xdebug was already enabled"
+    exit 1
+  fi
+}
+
+disable() {
+  execSh "cd /usr/local/etc/php/conf.d; test -f docker-php-ext-xdebug.ini && mv docker-php-ext-xdebug.ini docker-php-ext-xdebug.off"
+  if [ $? -eq 0 ]
+  then
+    restartContainer
+    echoGreen "Disabled Xdebug!"
+    exit 0
+  else
+    echoRed "Xdebug was already disabled"
+    exit 1
+  fi
+}
+
+isEnabled() {
+  execSh "php -m | grep Xdebug > /dev/null"
+  return $?
+}
+
+status() {
+  isEnabled
+  if [ $? -eq 0 ]
+  then
+    echoGreen "Status: Enabled"
+    exit 0
+  else
+    echoRed "Status Disabled"
+    exit 1
+  fi
+}
+
+#/bin/bash
+case "$1" in
+  "enable")
+    enable
+    ;;
+  "disable")
+    disable
+    ;;
+  "status")
+    status
+    ;;
+  "help")
+    printHelp
+    ;;
+  *)
+    echo "Error: no command specified"
+    echo ""
+    printHelp
+    exit 1
+    ;;
+esac

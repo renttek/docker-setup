@@ -1,0 +1,40 @@
+#!/bin/bash
+
+GREEN='\033[1;32m'
+NC='\033[0m'
+
+printHelp() {
+    echo "Usage: bin/varnish <command>"
+    echo ""
+    echo "Commands:"
+    echo "  enable      - Enables varnish"
+    echo "  disable     - Disables varnish"
+    echo ""
+}
+
+execSh() {
+  docker-compose exec nginx-static-files sh -c "$@"
+}
+
+case "$1" in
+  "enable")
+    execSh "touch -f /tmp/enable-varnish"
+    echo -e "${GREEN}Enabled varnish${NC}"
+    ;;
+  "disable")
+    execSh "rm -f /tmp/enable-varnish"
+    echo -e "${GREEN}Disabled varnish${NC}"
+    ;;
+  "status")
+    status
+    ;;
+  "help")
+    printHelp
+    ;;
+  *)
+    echo "Error: no command specified"
+    echo ""
+    printHelp
+    exit 1
+    ;;
+esac

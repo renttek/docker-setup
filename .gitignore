@@ -1,0 +1,44 @@
+*.pem
+/.data
+
+# Editor files
+/.zfproject.xml
+/.buildpath
+/.cache
+/.metadata
+/.project
+/.settings/
+/nbproject/
+/.idea/
+
+# OS files
+__MACOSX/
+[Tt]humbs.db
+*.DS_Store
+
+# Local dev files
+/data
+/*.sql
+/*.tgz
+/*.gz
+/*.zip
+
+# Ignore all Magento code files except our code in "src/app"
+/src/*
+!/src/composer.json
+!/src/composer.lock
+!/src/app
+/src/app/code/Magento
+/src/app/etc/env.php
+!/src/app/etc/env.php.template
+/src/app/etc/di.xml
+/src/app/etc/enterprise/di.xml
+/src/app/etc/NonComposerComponentRegistration.php
+/src/app/etc/vendor_path.php
+/src/app/i18n/magento
+/src/app/*.*
+/src/app/etc/db_schema.xml
+/src/app/etc/registration_globlist.php
+
+# Ignore auth.json for local
+/src/auth.json

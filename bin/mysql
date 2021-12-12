@@ -1,0 +1,5 @@
+#!/bin/bash
+
+source <(grep '^MYSQL' <"$(dirname $0)/../.env")
+
+docker-compose exec -u "$(id -u):$(id -g)" database mysql -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DATABASE" "$@"
