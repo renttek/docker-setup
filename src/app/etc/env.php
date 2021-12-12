@@ -14,7 +14,7 @@ return [
             'password' => 'admin',
             'virtualhost' => '/'
         ],
-        'consumers_wait_for_messages' => 1
+        'consumers_wait_for_messages' => 0
     ],
     'crypt' => [
         'key' => 'c1aef4f2b1034e815a12923da758db01'

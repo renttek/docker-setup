@@ -1,0 +1,76 @@
+POST https://demo.local/rest/V1/integration/admin/token
+Accept: application/json
+Content-Type: application/json
+
+{
+    "username": "magento",
+    "password": "magento123"
+}
+
+> {%
+client.global.clear("token");
+client.global.set("token", response.body.toString());
+client.log("Token: " + client.global.get('token'))
+%}
+
+###
+
+GET https://demo.local/rest/default/V1/products/attribute-sets/sets/list?searchCriteria=
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+> {%
+client.global.clear('attributeSetId')
+client.global.set('attributeSetId', response.body.items[0].attribute_set_id)
+client.log("Attribute Set ID: " + client.global.get('attributeSetId'))
+%}
+
+###
+
+POST https://demo.local/rest/async/bulk/V1/products
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+[
+    {
+        "product": {
+            "sku": "bulk-{{$uuid}}",
+            "name": "Bulk {{$uuid}}",
+            "type_id": "simple",
+            "attribute_set_id": {{attributeSetId}},
+            "price": 10
+        }
+    },
+    {
+        "product": {
+            "sku": "bulk-{{$uuid}}",
+            "name": "Bulk {{$uuid}}",
+            "type_id": "simple",
+            "attribute_set_id": {{attributeSetId}},
+            "price": 10
+        }
+    },
+    {
+        "product": {
+            "sku": "bulk-{{$uuid}}",
+            "name": "Bulk {{$uuid}}",
+            "type_id": "simple",
+            "attribute_set_id": {{attributeSetId}},
+            "price": 10
+        }
+    }
+]
+
+> {%
+client.global.clear('bulkUuid')
+client.global.set('bulkUuid', response.body.bulk_uuid)
+client.log(client.global.get('bulkUuid'))
+%}
+
+###
+
+GET https://demo.local/rest/V1/bulk/{{bulkUuid}}/status
+Accept: application/json
+Authorization: Bearer {{token}}
