@@ -54,3 +54,9 @@ client.log(client.global.get('bulkUuid'))
 GET https://demo.local/rest/V1/bulk/{{bulkUuid}}/status
 Accept: application/json
 Authorization: Bearer {{token}}
+
+###
+
+GET https://demo.local/rest/V1/bulk/{{bulkUuid}}/status
+Accept: application/json
+Authorization: Bearer {{token}}
