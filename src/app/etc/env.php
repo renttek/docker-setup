@@ -17,7 +17,7 @@ return [
         'consumers_wait_for_messages' => 0
     ],
     'crypt' => [
-        'key' => 'c1aef4f2b1034e815a12923da758db01'
+        'key' => '272b2d716b69075e0a5871ee9021ffa7'
     ],
     'db' => [
         'table_prefix' => '',
@@ -125,13 +125,11 @@ return [
         'demo.local'
     ],
     'install' => [
-        'date' => 'Sun, 12 Dec 2021 15:19:38 +0000'
+        'date' => 'Fri, 22 Jul 2022 06:25:21 +0000'
     ],
     'cron_consumers_runner' => [
         'cron_run' => false,
         'max_messages' => 10,
-        'consumers' => [
-
-        ]
+        'consumers' => []
     ]
 ];

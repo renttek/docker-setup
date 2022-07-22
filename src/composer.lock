@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ec197f8a525e06a7135695ff5aca8363",
+    "content-hash": "afad94f8758deeb6f202a069ccd1bca4",
     "packages": [
         {
             "name": "2tvenom/cborencode",
@@ -1974,6 +1974,50 @@
                 }
             ],
             "time": "2022-06-20T21:43:11+00:00"
+        },
+        {
+            "name": "integer-net/magento2-dump-server",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "git@bitbucket.org:integer_net/magento-2-dump-server.git",
+                "reference": "7ca8a5dae6542fe2a6dfc8a085eaa7a91f734e11"
+            },
+            "require": {
+                "magento/framework": "*",
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "bitexpert/phpstan-magento": ">=0.23.0",
+                "phpro/grumphp-shim": "^1.13",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan": "^1.7",
+                "roave/security-advisories": "dev-latest",
+                "squizlabs/php_codesniffer": "^3.7",
+                "symfony/var-dumper": "^4.2|^5.0|^6.0",
+                "vimeo/psalm": "^4.24"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "IntegerNet\\DumpServer\\": "src/"
+                }
+            },
+            "scripts": {
+                "test-static": [
+                    "vendor/bin/phpcs --standard=PSR12 src",
+                    "vendor/bin/phpstan",
+                    "vendor/bin/psalm"
+                ]
+            },
+            "license": [
+                "Proprietary"
+            ],
+            "description": "N/A",
+            "time": "2022-07-11T14:20:37+00:00"
         },
         {
             "name": "justinrainbow/json-schema",

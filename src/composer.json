@@ -17,9 +17,10 @@
     },
     "version": "2.4.4",
     "require": {
-        "magento/product-community-edition": "2.4.4",
+        "integer-net/magento2-dump-server": "^1.0",
         "magento/composer-dependency-version-audit-plugin": "~0.1",
         "magento/composer-root-update-plugin": "~2.0",
+        "magento/product-community-edition": "2.4.4",
         "yireo/magento2-replace-bundled": "^4.3"
     },
     "autoload": {
@@ -76,11 +77,16 @@
     "repositories": [
         {
             "type": "composer",
-            "url": "https://repo.magento.com/"
+            "url": "https://repo.magento.com/",
+            "only": ["magento/*"]
+        },
+        {
+            "type": "vcs",
+            "url": "git@bitbucket.org:integer_net/magento-2-dump-server.git",
+            "only": ["integer-net/magento2-dump-server"]
         }
     ],
     "extra": {
         "magento-force": "override"
     }
 }
-

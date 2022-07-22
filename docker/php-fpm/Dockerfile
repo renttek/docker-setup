@@ -39,6 +39,8 @@ RUN set -ex; \
     apk add --virtual .run-dependencies ${run_dependencies}; \
     apk del .build-dependencies
 
+RUN apk add git openssh binutils patch
+
 RUN set -ex; \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
