@@ -45,3 +45,4 @@ __MACOSX/
 
 # Ignore auth.json for local
 /src/auth.json
+
