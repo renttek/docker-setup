@@ -140,6 +140,33 @@ return [
                 'general' => [
                     'enable' => '0'
                 ]
+            ],
+            'admin' => [
+                'security' => [
+                    'password_is_forced' => '0',
+                    'password_reset_protection_type' => '0',
+                    'admin_account_sharing' => '1',
+                    'session_lifetime' => '31536000',
+                    'lockout_failures' => '1000',
+                    'password_lifetime' => '365'
+                ],
+                'captcha' => [
+                    'enable' => '0'
+                ],
+                'usage' => [
+                    'enabled' => '0'
+                ]
+            ],
+            'dev' => [
+                'template' => [
+                    'allow_symlink' => '1'
+                ]
+            ],
+            'system' => [
+                'security' => [
+                    'max_session_size_admin' => '0',
+                    'max_session_size_storefront' => '0'
+                ]
             ]
         ]
     ]
