@@ -130,6 +130,17 @@ return [
     'cron_consumers_runner' => [
         'cron_run' => false,
         'max_messages' => 10,
-        'consumers' => []
+        'consumers' => [
+
+        ]
+    ],
+    'system' => [
+        'default' => [
+            'twofactorauth' => [
+                'general' => [
+                    'enable' => '0'
+                ]
+            ]
+        ]
     ]
 ];
