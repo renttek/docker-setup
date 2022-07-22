@@ -11,6 +11,9 @@
 /nbproject/
 /.idea/
 
+# Cache files
+/.phpunit.result.cache
+
 # OS files
 __MACOSX/
 [Tt]humbs.db

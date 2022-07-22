@@ -60,11 +60,6 @@ services:
     build:
       context: ./docker/elasticsearch
 
-  elastichq:
-    image: elastichq/elasticsearch-hq
-    env_file:
-      - .env
-
   mailhog:
     build:
       context: ./docker/mailhog
