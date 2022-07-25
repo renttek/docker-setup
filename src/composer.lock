@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "582ac6475bb13148da542904ba16083f",
+    "content-hash": "8115c7fa1b844a8972ac70e031d32098",
     "packages": [
         {
             "name": "2tvenom/cborencode",
@@ -16894,6 +16894,56 @@
             "time": "2021-06-14T00:11:39+00:00"
         },
         {
+            "name": "nikic/iter",
+            "version": "v2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nikic/iter.git",
+                "reference": "d1323929952ddcb0b06439991f93bde3816a39e9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nikic/iter/zipball/d1323929952ddcb0b06439991f93bde3816a39e9",
+                "reference": "d1323929952ddcb0b06439991f93bde3816a39e9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/iter.func.php",
+                    "src/iter.php",
+                    "src/iter.rewindable.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Nikita Popov",
+                    "email": "nikic@php.net"
+                }
+            ],
+            "description": "Iteration primitives using generators",
+            "keywords": [
+                "functional",
+                "generator",
+                "iterator"
+            ],
+            "support": {
+                "issues": "https://github.com/nikic/iter/issues",
+                "source": "https://github.com/nikic/iter/tree/v2.2.0"
+            },
+            "time": "2021-08-02T15:04:32+00:00"
+        },
+        {
             "name": "nikic/php-parser",
             "version": "v4.14.0",
             "source": {
@@ -18156,6 +18206,46 @@
                 }
             ],
             "time": "2022-02-11T10:27:51+00:00"
+        },
+        {
+            "name": "renttek/magento2-attributes",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "packages/renttek-attributes",
+                "reference": "753264e575b589457491c859a13166c82455f782"
+            },
+            "require": {
+                "magento/framework": "*",
+                "nikic/iter": "^2.2",
+                "php": "^8.1",
+                "symfony/finder": "^4.4|^5.4|^6.0"
+            },
+            "require-dev": {
+                "roave/security-advisories": "dev-latest"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php",
+                    "src/functions.php"
+                ],
+                "psr-4": {
+                    "Renttek\\Attributes\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Julian Nuß",
+                    "email": "juliann@renttek.de"
+                }
+            ],
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "sabberworm/php-css-parser",
@@ -26531,8 +26621,10 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "renttek/magento2-attributes": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],

@@ -24,6 +24,7 @@
         "magento/composer-root-update-plugin": "~2.0",
         "magento/product-community-edition": "2.4.4",
         "markshust/magento2-module-disabletwofactorauth": "^2.0",
+        "renttek/magento2-attributes": "dev-main",
         "yireo/magento2-replace-bundled": "^4.3"
     },
     "autoload": {
@@ -79,7 +80,7 @@
             "Magento\\Tools\\Sanity\\": "dev/build/publication/sanity/Magento/Tools/Sanity/"
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true,
     "repositories": [
         {
@@ -96,6 +97,11 @@
             "type": "github",
             "url": "git@github.com:renttek/magento2-psalm.git",
             "only": ["tdgroot/magento2-psalm"]
+        },
+        {
+            "type": "path",
+            "url": "packages/renttek-*",
+            "only": ["renttek/*"]
         }
     ],
     "extra": {
