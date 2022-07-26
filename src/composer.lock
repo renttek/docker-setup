@@ -18213,7 +18213,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/renttek-attributes",
-                "reference": "753264e575b589457491c859a13166c82455f782"
+                "reference": "ab77219991e6a4eae05dbd65c509d646630da1bf"
             },
             "require": {
                 "magento/framework": "*",
