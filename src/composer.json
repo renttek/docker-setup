@@ -79,6 +79,10 @@
         {
             "type": "composer",
             "url": "https://repo.magento.com/"
+        },
+        {
+            "type": "path",
+            "url": "packages/*"
         }
     ],
     "extra": {
