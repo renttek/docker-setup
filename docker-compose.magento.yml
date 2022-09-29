@@ -37,6 +37,7 @@ services:
 
   database:
     image: mysql:8
+    command: ['--skip-log-bin']
     volumes:
       - ./.data/database:/var/lib/mysql
       - ./etc/database/dumps:/docker-entrypoint-initdb.d
