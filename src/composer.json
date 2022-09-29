@@ -21,6 +21,7 @@
         "magento/composer-dependency-version-audit-plugin": "~0.1",
         "magento/composer-root-update-plugin": "~2.0",
         "magento/product-community-edition": "2.4.5",
+        "markshust/magento2-module-disabletwofactorauth": "^2.0",
         "yireo/magento2-replace-bundled": "^4.3"
     },
     "autoload": {
