@@ -6,6 +6,8 @@ export GID
 
 default:
 	echo "Default task not defined"
+	echo $(UID)
+	echo $(GID)
 .PHONY: default
 
 
